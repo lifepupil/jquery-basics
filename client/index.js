@@ -3,36 +3,104 @@
 // i.e. when doc is ready, call init function
 $(document).ready(init);
 
+var newNum;
+var oldScreen = '';
+var screenNum;
+var operatorStr = '';
+
 function init() {
-  $('.article').click(settext);
-  $('.noun').click(settext);
-  $('.verb').click(settext);
-  $('.adjective').click(settext);
-  $('#clear').click(clear);
+  $('.number').click(numClicked);
+  $('.operator').click(operClicked);
+  $('#clear').click(clearClicked);
+  $('#changeSign').click(clickChangeSign);
 }
 
-function clear() {
-  $('#sentence').text('');
+function clearClicked() {
+  $('#screen').text('0');
+  oldScreen = '';
+  screenNum = '';
+  newNum = '';
 }
 
-function article() {
+function clickChangeSign() {
+  screenNum = $('#screen').text();
+  var tempNum = parseFloat(screenNum) * -1;
+  $('#screen').text(tempNum);
+  screenNum = $('#screen').text();
+}
 
+function numClicked() {
+  newNum = $(this).attr("id");
+  screenNum = $('#screen').text();
+
+  if (screenNum !== "0") {
+    $('#screen').text(screenNum + newNum);
+    screenNum = $('#screen').text();
+  } else {
+    $('#screen').text(newNum);
+    screenNum = $('#screen').text();
+  }
+
+  if (operatorStr !== '' && screenNum === '') {
+    $('#screen').text(screenNum + newNum);
+    screenNum = $('#screen').text();
+  }
+}
+
+function operClicked() {
+  operatorStr = $(this).text();
+  if (oldScreen === '') {
+    oldScreen = screenNum;
+    screenNum = '';
+  } else {
+    switch (operatorStr) {
+      case "+":
+        answer = parsefloat(oldScreen) + parsefloat(screenNum);
+        $('#screen').text(answer);
+        screenNum = $('#screen').text();
+        oldScreen = '';
+        break;
+      case "-":
+        answer = parsefloat(oldScreen) - parsefloat(screenNum);
+        $('#screen').text(answer);
+        screenNum = $('#screen').text();
+        oldScreen = '';
+        break;
+      case "*":
+        answer = parsefloat(oldScreen) + parsefloat(screenNum);
+        $('#screen').text(answer);
+        screenNum = $('#screen').text();
+        oldScreen = '';
+        break;
+      case "/":
+        answer = parsefloat(oldScreen) / parsefloat(screenNum);
+        $('#screen').text(answer);
+        screenNum = $('#screen').text();
+        oldScreen = '';
+        break;
+      case "%":
+        answer = parsefloat(oldScreen) % parsefloat(screenNum);
+        $('#screen').text(answer);
+        screenNum = $('#screen').text();
+        oldScreen = '';
+        break;
+      case "=":
+        answer = parsefloat(oldScreen) + parsefloat(screenNum);
+        $('#screen').text(answer);
+        screenNum = $('#screen').text();
+        oldScreen = '';
+    }
+  }
 }
 
 function settext() {
-  var old = $('#sentence').text();
+  var old = $('#screen').text();
   var text = $(this).text();
   var newtxt = old + " " + text;
-  $('#sentence').text(newtxt);
+  $('#screen').text(newtxt);
 }
 
-function adjective() {
 
-}
-
-function verb() {
-
-}
 
 
 // function init() {

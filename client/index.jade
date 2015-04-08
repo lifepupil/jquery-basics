@@ -2,57 +2,57 @@ doctype html
 html
   head
     meta(charset='utf-8')      
-    title jQuery Demo
+    title jQuery Calculator
     link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href=isProd ? '/index.min.css' : '/index.css')
     link(rel='shortcut icon', href='/favicon.ico')
   body
-    h1 jQuery Demo
-    
-    h1 sentence generator
-    button#clear Clear
-    
-    h3 articles
-    span.article a
-    span.article the
-    
-    h3 nouns
-    span.noun dog
-    span.noun student
-    span.noun house
-    span.noun California
-    
-    h3 verbs
-    span.verb run 
-    span.verb laugh
-    span.verb jump
-    span.verb study
-    
-    h3 adjectives
-    span.adjective large
-    span.adjective loud
-    span.adjective crazy
-    span.adjective small
-    
-    h3 sentence
-    #sentence
-    
-    
-    
-    //- p#main This is P1
-    //- p.x.y This is P2
-    //- p#alt.x This is P3
-    //- p.y.x This is P4
-    
-    //- CREATING A TEXTBOX AND A BUTTON
-    //- FIRST CREATE THE IMPUT AND BUTTON BEFORE GOING TO .js
-    //- h1 Calculator
-    //- input#x(type='text')
-    //- input#oper(type='text')
-    //- input#y(type='text')
-    //- button#go Calculate!
-    //- p#result
-    //- 
+    h1 jQuery Calculator
+
+    #screen 0
+    ul
+      li.key
+        #clear C
+      li.key
+        #changeSign +/-
+      li.key
+        #modulus %
+      li.key
+        .operator /
+    ul
+      li.key
+        .number#7 7
+      li.key
+        .number#8 8
+      li.key
+        .number#9 9
+      li.key
+        .operator x
+    ul
+      li.key
+        .number#4 4
+      li.key
+        .number#5 5
+      li.key
+        .number#6 6
+      li.key
+        .operator -
+    ul
+      li.key
+        .number#1 1
+      li.key
+        .number#2 2
+      li.key
+        .number#3 3
+      li.key
+        .operator +
+    ul
+      li.zeroKey 0   
+      li.key
+        #decimal .
+      li.key
+        .operator =
+
     script(src='/vendor/jquery/dist/jquery.min.js')
     script(src='/vendor/lodash/lodash.min.js')
     script(src=isProd ? '/index.min.js' : '/index.js')
