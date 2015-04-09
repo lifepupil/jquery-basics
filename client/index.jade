@@ -18,7 +18,7 @@ html
       li.key
         #modulus %
       li.key
-        .operator /
+        .operator &div;
     ul
       li.key
         .number#7 7
@@ -27,7 +27,7 @@ html
       li.key
         .number#9 9
       li.key
-        .operator x
+        .operator &times;
     ul
       li.key
         .number#4 4
@@ -47,11 +47,12 @@ html
       li.key
         .operator +
     ul
-      li.zeroKey 0   
+      li.zeroKey
+        #zero 0
       li.key
         #decimal .
       li.key
-        .operator =
+        #equals =
 
     script(src='/vendor/jquery/dist/jquery.min.js')
     script(src='/vendor/lodash/lodash.min.js')
